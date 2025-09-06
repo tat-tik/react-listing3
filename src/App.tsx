@@ -1,11 +1,11 @@
 import './App.css'
-import { data } from './components';
+import  dataItem from './components/data.json';
 import { Listing } from './components/Listing';
 
 function App() {
   return (
     <div className="App">
-      <Listing data={data}/>
+      <Listing data ={dataItem}/>
     </div>
   );
 }

@@ -20,7 +20,7 @@ function displayQuantity(quantity: number) {
   return 'level-high';
 }
 
-export function Listing ({ data }: ListingProps) {
+export function Listing ({ data = [] }: ListingProps) {
     const items = data.filter((item) => "MainImage" in item);
     return (
         <div>
@@ -37,7 +37,7 @@ export function Listing ({ data }: ListingProps) {
                                 {displayTitle(item.title)}</p>
                             <p className="item-price">
                                 {displayPrice(item.currency_code, item.price)}</p>
-                            <p className={"item-quantity ${displayQuantity(item.quantity)}"}>
+                            <p className={`item-quantity ${displayQuantity(item.quantity)}`}>
                                 {item.quantity} left</p>
                         </div>
                     </div>
