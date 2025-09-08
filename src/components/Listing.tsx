@@ -1,4 +1,4 @@
-import type { Item } from "./model";
+import type { Item, ItemData } from "./model";
 
 type ListingProps = {
     data: Item[];
@@ -21,28 +21,30 @@ function displayQuantity(quantity: number) {
 }
 
 export function Listing ({ data = [] }: ListingProps) {
-    const items = data.filter((item) => "MainImage" in item);
+    const items: ItemData[] = data.filter((item) => "MainImage" in item)
     return (
-        <div>
+        <div className="item-list">
             {items.map(item=> (
-                <div className="item-list" key={item.listing_id}>
-                    <div className="item">
+               
+                <div className="item" key={item.listing_id}>
+                    
                         <div className="item-image">
                             <a href={item.url}>
-                                <img src={item.MainImage.url_570xN} alt="" />
+                                <img src={item.MainImage?.url_570xN} alt="" />
                             </a>
                         </div>
                         <div className="item-details">
-                            <p className="item-title">
-                                {displayTitle(item.title)}</p>
+                            < p className="item-title">{displayTitle(item.title || "")}</p>
                             <p className="item-price">
-                                {displayPrice(item.currency_code, item.price)}</p>
-                            <p className={`item-quantity ${displayQuantity(item.quantity)}`}>
+                                {displayPrice((item.currency_code || ""), (item.price|| ""))}</p>
+                            <p className={`item-quantity ${displayQuantity(item.quantity|| "")}`}>
                                 {item.quantity} left</p>
                         </div>
                     </div>
-                </div>
+                    
+                
             ))}
-        </div>
-    );
+            </div>
+
+            )
 }

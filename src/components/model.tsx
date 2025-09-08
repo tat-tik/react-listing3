@@ -1,5 +1,5 @@
 export type ItemData = {
-    listing_id?: number;
+    listing_id: number;
     url?: string;
     MainImage?: {
         "url_570xN": string;
