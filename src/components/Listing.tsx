@@ -37,7 +37,7 @@ export function Listing ({ data = [] }: ListingProps) {
                             < p className="item-title">{displayTitle(item.title || "")}</p>
                             <p className="item-price">
                                 {displayPrice((item.currency_code || ""), (item.price|| ""))}</p>
-                            <p className={`item-quantity ${displayQuantity(item.quantity|| "")}`}>
+                            <p className={`item-quantity ${displayQuantity(item.quantity|| 0)}`}>
                                 {item.quantity} left</p>
                         </div>
                     </div>
